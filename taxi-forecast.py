@@ -14,7 +14,7 @@ from fbprophet.diagnostics import cross_validation
 from fbprophet.plot import plot_cross_validation_metric
 import base64
 
-data = pd.read_csv("/Users/federicolandaburu/Downloads/Taxis.csv", sep=";")
+data = pd.read_csv("Taxis.csv", sep=";")
 data['ds'] = pd.to_datetime(data['ds'],errors='coerce') 
 
 max_date = data['ds'].max()
