@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run taxi-forecast.py
+web: sh setup.sh && streamlit run taxiforecast.py
