@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jan 21 16:39:32 2021
-
-@author: federicolandaburu
-"""
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -14,7 +7,7 @@ from fbprophet.diagnostics import cross_validation
 from fbprophet.plot import plot_cross_validation_metric
 import base64
 
-data = pd.read_csv("Taxis.csv", sep=";")
+data = pd.read_csv("/Users/federicolandaburu/Taxis.csv", sep=";")
 data['ds'] = pd.to_datetime(data['ds'],errors='coerce') 
 
 max_date = data['ds'].max()
@@ -34,9 +27,17 @@ fig1 = m.plot(forecast)
 fig2 = m.plot_components(forecast)
 
 
-st.write(fcst_filtered)
+st.title("Prediccion de venta de licencias de taxi en 2021 en base ventas pasadas")
+st.write(round(fcst_filtered['yhat'].sum(),0), 'Licencias estimadas en 2021')
+
+st.write('Cantidad de licencias estimadas a vender por mes', fcst_filtered[['ds','yhat']])
+st.subheader('Licencias vendidas en negro y estimacion en azul')
 st.write(fig1)
+st.subheader('Tendencia de los ultimos años')
 st.write(fig2)
+
+
+
 
 
 
